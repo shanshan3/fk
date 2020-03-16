@@ -2,6 +2,12 @@ kind: pipeline
 name: default
 
 steps:
+- name: build 
+  image: golang:latest
+  environment:
+      GOPROXY: https://mirrors.aliyun.com/goproxy/
+  commands:
+      - CGO_ENABLED=0 go build -o demo-app
 - name: docker  
   image: plugins/docker
   settings:
