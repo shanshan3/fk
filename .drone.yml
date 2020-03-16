@@ -1,16 +1,11 @@
----
 kind: pipeline
-type: exec
 name: default
-pipeline:
-  build:
-    image: redis:3.0
-    commands:
-      - sleep 5
-      - redis-cli -h redis ping
-      - redis-cli -h redis set HELLO hello
-      - redis-cli -h redis get HELLO
 
-services:
-  redis:
-    image: redis:3.0
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
+    username: xiashan
+    password: omylove33
+    repo:  xiashan/fks
+    tags: latest
