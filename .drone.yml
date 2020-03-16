@@ -1,17 +1,10 @@
+---
 kind: pipeline
 name: default
 
 steps:
-- name: build 
-  image: golang:latest
-  environment:
-      GOPROXY: https://mirrors.aliyun.com/goproxy/
+- name: test
+  image: python
   commands:
-      - CGO_ENABLED=0 go build -o demo-app
-- name: docker  
-  image: plugins/docker
-  settings:
-    username: xiashan
-    password: omylove33
-    repo:  xiashan/fks
-    tags: latest
+  - pip install -r requirements.txt
+  - pytest
