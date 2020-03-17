@@ -20,7 +20,7 @@ steps:
     - name: docker
       image: plugins/docker
       settings:
-          register: 47.52.66.40:82
+          registry: 47.52.66.40:82
           repo: xiashan/drone-fk
           use_cache: true
           username: ss
