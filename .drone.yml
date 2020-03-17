@@ -25,7 +25,8 @@ steps:
           use_cache: true
           username: ss
           password: Aa123456
-          auto_tag: true
+          #auto_tag: true
+          tags: "${DRONE_COMMIT_SHA}"
           insecure: true
           when:
               event: push
