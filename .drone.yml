@@ -1,15 +1,10 @@
----
 kind: pipeline
+type: docker
 name: default
-pipeline:
-  build:
-    image: redis:3.0
-    commands:
-      - sleep 5
-      - redis-cli -h redis ping
-      - redis-cli -h redis set HELLO hello
-      - redis-cli -h redis get HELLO
 
-services:
-  redis:
-    image: redis:3.0
+steps:
+- name: greeting
+  image: alpine
+  commands:
+  - echo hello
+  - echo world
