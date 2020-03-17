@@ -5,6 +5,7 @@ name: default
 steps:
 - name: test
   image: python
+  pull: true
   commands:
   - pip install -r requirements.txt
   - pytest
