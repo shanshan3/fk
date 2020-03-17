@@ -28,7 +28,8 @@ steps:
               from_secret: hub_user
           password: 
             from_secret: hub_pwd
-          auto_tag: true
+          #auto_tag: true
+          tags: "${DRONE_TAG##v}"
           #tags: "${DRONE_COMMIT_SHA}"
           #         insecure: true
           when:
