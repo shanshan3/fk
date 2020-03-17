@@ -1,12 +1,28 @@
 kind: pipeline
-type: docker
-#type: exec 
 name: default
-
 steps:
-- name: greeting
-  image: alpine
-  commands:
-  - sleep 120
-  - echo hello
-  - echo world
+    - name: linter
+      image: golang:latest
+      environment:
+          GOPROXY: https://mirrors.aliyun.com/goproxy/
+      commands:
+          - go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
+          - golangci-lint run
+    - name: build
+      image: golang:latest
+      environment:
+      GOPROXY: https://mirrors.aliyun.com/goproxy/
+      commands:
+          - CGO_ENABLED=0 go build -o demo-app
+    - name: docker
+      image: plugins/docker
+      settings:
+          repo: cnych/drone-k8s-demo
+          use_cache: true
+          username: xiashan
+          password: omylove33
+          tags:
+              - latest
+          when:
+              event: push
+              branch: master
