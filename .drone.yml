@@ -20,7 +20,7 @@ steps:
     - name: docker
       image: plugins/docker
       settings:
-          repo: drone-fk
+          repo: xiashan/drone-fk
           use_cache: true
           username: xiashan
           password: omylove33
