@@ -5,8 +5,9 @@ import (
  "github.com/sirupsen/logrus"
 )
 func main() {
+
  r := gin.Default()
- r.GET("/health", func(c *gin.Context) {
+ r.GET("/healths", func(c *gin.Context) {
  c.JSON(http.StatusOK, gin.H {
  "health": true,
  })
