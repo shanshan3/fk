@@ -17,7 +17,7 @@ steps:
     - name: docker
       image: plugins/docker
       settings:
-          repo: cnych/drone-k8s-demo
+          repo: drone-fk
           use_cache: true
           username: xiashan
           password: omylove33
