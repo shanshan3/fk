@@ -1,11 +1,15 @@
 ---
 kind: pipeline
 name: default
+pipeline:
+  build:
+    image: redis:3.0
+    commands:
+      - sleep 5
+      - redis-cli -h redis ping
+      - redis-cli -h redis set HELLO hello
+      - redis-cli -h redis get HELLO
 
-steps:
-- name: test
-  image: python
-  pull: true
-  commands:
-  - pip install -r requirements.txt
-  - pytest
+services:
+  redis:
+    image: redis:3.0
