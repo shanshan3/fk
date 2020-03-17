@@ -30,7 +30,7 @@ steps:
             from_secret: hub_pwd
           auto_tag: true
           #tags: "${DRONE_COMMIT_SHA}"
-          insecure: true
+          #         insecure: true
           when:
               event: push
               branch: master
