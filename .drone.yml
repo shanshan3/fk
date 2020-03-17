@@ -21,10 +21,10 @@ steps:
       image: plugins/docker
       settings:
           registry: 47.52.66.40:82
-          repo: xiashan/drone-fk
+          repo: drone-fk
           use_cache: true
           username: ss
-          password: Aa123456,.
+          password: Aa123456
           auto_tag: true
           when:
               event: push
