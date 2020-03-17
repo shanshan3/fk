@@ -24,8 +24,7 @@ steps:
           use_cache: true
           username: xiashan
           password: omylove33
-          tags:
-              - latest
+          auto_tag: true
           when:
               event: push
               branch: master
