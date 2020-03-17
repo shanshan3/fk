@@ -20,13 +20,16 @@ steps:
     - name: docker
       image: plugins/docker
       settings:
-          registry: 47.52.66.40:82
-          repo: 47.52.66.40:82/ssb/drone-fk
+#         registry: 47.52.66.40:82
+#          repo: 47.52.66.40:82/ssb/drone-fk
+          repo: xiashan/drone-fk
           use_cache: true
-          username: ss
-          password: Aa123456
-          #auto_tag: true
-          tags: "${DRONE_COMMIT_SHA}"
+          username:
+              from_secret: hub_user
+          password: 
+            from_secret: hub_pwd
+          auto_tag: true
+          #tags: "${DRONE_COMMIT_SHA}"
           insecure: true
           when:
               event: push
