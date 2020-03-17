@@ -1,37 +1,7 @@
-kind: pipeline
-name: default
-steps:
-    - name: linter
-      image: golang:latest
-      #environment:
-      #    GOPROXY: https://mirrors.aliyun.com/goproxy/
-      commands:
-          - go get -u github.com/spf13/viper
-          - go get -u google.golang.org/grpc
-          - go get -u cloud.google.com/go
-          - go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
-          - golangci-lint run
-    - name: build
-      image: golang:latest
-      #environment:
-      #    GOPROXY: https://mirrors.aliyun.com/goproxy/
-      commands:
-          - CGO_ENABLED=0 go build -o demo-app
-    - name: docker
-      image: plugins/docker
-      settings:
-#         registry: 47.52.66.40:82
-#          repo: 47.52.66.40:82/ssb/drone-fk
-          repo: xiashan/drone-fk
-          use_cache: true
-          username:
-              from_secret: hub_user
-          password: 
-            from_secret: hub_pwd
-          auto_tag: true
-          #tags: "${DRONE_TAG##v}"
-          #tags: "${DRONE_COMMIT_SHA}"
-          #         insecure: true
-          when:
-              event: push
-              branch: master
+
+pipeline:
+  build:
+    image: golang:latest
+    commands:
+      - go get
+      - go build
