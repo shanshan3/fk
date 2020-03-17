@@ -26,6 +26,7 @@ steps:
           username: ss
           password: Aa123456
           auto_tag: true
+          insecure: true
           when:
               event: push
               branch: master
